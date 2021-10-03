@@ -89,59 +89,17 @@ const galleryItems = [
   .join('');
 }
 
-
-
-// const galleryContainer = document.querySelector(".js-gallery");
-// const lightboxRef = document.querySelector(".js-lightbox");
-// const lightboxImageRef = document.querySelectorAll(".lightbox__image");
-
-// const dataOriginal = [];
-  
-// const createGalleryMarkup = galleryItems.reduce((acc, img) => {
-//   dataOriginal.push(img);
-//   let imgEl =  
-  
-//   `<li class="gallery__item">
-//      <a
-//          class="gallery__link"
-//          href="${img.original}"
-//        >
-//          <img
-//            class="gallery__image"
-//            src="${img.preview}"
-
-//            data-source="${img.original}"
-
-//            alt="${img.description}"
-//          />
-//        </a>
-//      </li>`
-  
-  // `<li class=gallery__item><a class="galleryLink"><img srs="${img.preview}" alt="${img.description}" class="gallery__image" >`;
-//   return acc + imgEl;
-// }, "");
-
-// galleryContainer.insertAdjacentHTML("beforeend", createGalleryMarkup);
-
-
 const lightboxRef = document.querySelector(".js-lightbox");
-const lightboxImageRef = document.querySelectorAll(".lightbox__image");
+const lightboxImageRef = document.querySelector(".lightbox__image");
 
 galleryContainer.addEventListener("click", (evt) => {
  
-  // evt.preventDefault()
-  
-  galleryItems.forEach((el) => {
-        // evt.preventDefault();
-    if (evt.target.alt === el.description) {
-        lightboxImageRef.src = el.original;
-        // lightboxImageRef.src = el.dataset.source;
-        lightboxImageRef.alt = el.description
-    }
-    
-    lightboxRef.classList.add("is-open")
-})
-})
+  evt.preventDefault()
+      
+  lightboxRef.classList.add("is-open");
+  lightboxImageRef.src = evt.target.dataset.source;
+  lightboxImageRef.alt = evt.target.alt;
+});
 
 const buttonClose = document.querySelector(".lightbox__button")
 
